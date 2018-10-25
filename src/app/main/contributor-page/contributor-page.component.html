@@ -1,0 +1,27 @@
+<a class="back" (click)="goBack()">Go Back</a>
+
+<div class="contributor" *ngIf='user'>
+  <div class="head">
+    <div class="avatar">
+      <img src="{{user.avatarUrl}}" alt="">
+    </div>
+
+    <div class="name">
+      <h1>{{user.login}}</h1>
+    </div>
+  </div>
+  <div class="desc">
+
+    <p *ngIf="user.bio"><strong>Bio: </strong> {{user.bio}}</p>
+    <p *ngIf="user.location"><strong>Location: </strong> {{user.location}}</p>
+    <p *ngIf="user.company"><strong>Company: </strong> {{user.company}}</p>
+    <p><strong>Followers: </strong> {{user.followers.totalCount}}</p>
+    <p><strong>Gists: </strong> {{user.gists.totalCount}}</p>
+    <span class="repos">
+      <p *ngIf="user.repositories.edges.length > 0"><strong>Repositories:</strong> </p>
+      <ul>
+        <li *ngFor="let repo of user.repositories.edges">{{repo.node.name}}</li>
+      </ul>
+    </span>
+  </div>
+</div>

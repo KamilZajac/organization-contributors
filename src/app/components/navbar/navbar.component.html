@@ -1,0 +1,15 @@
+<nav>
+  <div class="container">
+    <div class="org">
+      <p>{{organization}}</p>
+      <a class="change" (click)="onChangeOrganization()">change</a>
+    </div>
+    <div class="sort">
+      <p><small> Sort by: </small></p>
+      <div class="sort-panel">
+        <span *ngFor="let option of sortingOptions" (click)="sortBy(option)" class="{{activeSorting.direction}}"
+          [ngClass]="{'active': activeSorting.property === option}">{{option}}</span>
+      </div>
+    </div>
+  </div>
+</nav>

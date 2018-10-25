@@ -1,0 +1,31 @@
+<app-navbar [organization]="organizationQuery" *ngIf="contributors" (sortingChanged)="changeSorting($event)"
+  (changeOrganizationClicked)='onChangeOrganization()'></app-navbar>
+
+<div class='contributors-list' *ngIf='contributors'>
+
+  <div class="contributors-wrapper">
+    <app-single-contributor *ngFor="let contributor of contributors | sortBy:activeSorting" [contributor]='contributor'
+      (click)='onMemberClicked(contributor)'></app-single-contributor>
+  </div>
+</div>
+
+<div class='modal' *ngIf='!contributors'>
+  <span *ngIf='!loading'>
+    <div class='field'>
+      <h4>Hi </h4>
+      <h4>{{user.login}}</h4>
+    </div>
+    <div class='field'>
+      <p> <small> Type in organization You are looking for </small></p>
+      <form (submit)='getContributors()'>
+        <input type='text' [(ngModel)]='organizationQuery' name="organization">
+        <input type='submit' class='submit' value='Submit' [disabled]='!organizationQuery.length' />
+      </form>
+    </div>
+  </span>
+
+  <div class="loader" *ngIf='loading'>
+    Loading...
+  </div>
+
+</div>

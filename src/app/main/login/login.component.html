@@ -1,0 +1,18 @@
+<div class="login" #login>
+  <form [formGroup]="Form" (submit)="logIn()" [class.error]=loginError>
+    <div class="field">
+      <h2>Hello!</h2>
+      <p> <small> please login to Your github account </small></p>
+    </div>
+    <div class="field">
+      <label>Login</label>
+      <input type="text" formControlName="login" (keyup)="loginError=false">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" formControlName="pass" (keyup)="loginError=false">
+    </div>
+    <input type="submit" class='submit' value="send" [disabled]=Form.invalid>
+  </form>
+</div>
