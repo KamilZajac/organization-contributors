@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { ContributorPageComponent } from './contributor-page/contributor-page.component';
+import { GraphQLModule } from '../graphql.module'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContributorPageComponent } from './contributor-page/contributor-page.co
     BrowserModule,
     FormsModule,
     ComponentsModule,
-    SharedModule
+    SharedModule,
+    GraphQLModule,
   ],
   exports: [
     LoginComponent,
